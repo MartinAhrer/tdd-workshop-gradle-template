@@ -1,0 +1,13 @@
+:toc: left
+
+= A collection of coding kata instructions
+Martin Ahrer office@codebreeze.io
+revision number, revision date: revision remark
+
+:author: Martin Ahrer
+:email: office@martinahrer.at
+
+
+include::{docdir}/src/doc/adoc/roman-numerals.adoc[leveloffset=+1]
+
+include::{docdir}/src/doc/adoc/kent-beck-money.adoc[leveloffset=+1]

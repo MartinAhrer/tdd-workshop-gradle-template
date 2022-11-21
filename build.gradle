@@ -1,0 +1,73 @@
+plugins {
+    id 'base'
+    id 'idea'
+    id 'java-library'
+    id 'java-test-fixtures'
+    id 'groovy'
+    id "org.jetbrains.kotlin.jvm" version "1.7.21"
+}
+
+repositories {
+    mavenCentral()
+}
+
+group = 'at.martinahrer.tdd.sample'
+version = '1.0-SNAPSHOT'
+
+
+ext {
+    javaVersion=17
+    groovyMinorVersion = '3.0'
+    groovyVersion = "${groovyMinorVersion}.13"
+    junitJupiterVersion = '5.9.1'
+    lombokVersion = '1.18.24'
+    mockkVersion = '1.13.2'
+    mockitoVersion = '4.8.1'
+    spockVersion = "2.1-groovy-${groovyMinorVersion}"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
+}
+
+
+dependencies {
+    implementation(project.dependencies.platform(group: 'org.codehaus.groovy', name: 'groovy-bom', version: groovyVersion))
+    implementation(group: 'org.codehaus.groovy', name: 'groovy')
+}
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter()
+            dependencies {
+                // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-bom
+                implementation(project.dependencies.platform(group: 'org.codehaus.groovy', name: 'groovy-bom', version: groovyVersion))
+                implementation(group: 'org.codehaus.groovy', name: 'groovy')
+                implementation(project.dependencies.platform(group: "org.spockframework", name: 'spock-bom', version: spockVersion))
+                implementation(group: 'org.spockframework', name: 'spock-core')
+
+                implementation("io.mockk:mockk:${mockkVersion}")
+
+                runtimeOnly(group: 'net.bytebuddy', name: 'byte-buddy', version: '1.11.0')
+                // allows mocking of classes (in addition to interfaces)
+                runtimeOnly(group: 'org.objenesis', name: 'objenesis', version: '3.2')
+                // allows mocking of classes without default constructor (together with ByteBuddy or CGLIB)
+
+                implementation(group: 'org.junit.jupiter', name: 'junit-jupiter', version: junitJupiterVersion)
+
+                implementation 'org.jetbrains.kotlin:kotlin-test'
+            }
+        }
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "${javaVersion}"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "${javaVersion}"
+}
