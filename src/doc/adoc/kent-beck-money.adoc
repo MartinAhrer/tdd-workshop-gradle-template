@@ -1,0 +1,80 @@
+= Kent Beck's Money
+
+== Kata instructions
+
+Kent Beck's original specifies the requirements to b be able to create a multi-currency report for investments.
+
+TIP: It is not important how far you get to a final and complete solution. You can work on this in many iterations, or repeat some parts until you feel you got the best code you feel you can write for this.
+
+== Money specification
+
+|===
+|Instrument |Shares | Price | Total
+
+|IBM
+|1000
+|25
+|25000
+
+|GE
+|400
+|100
+|40000
+
+|
+|
+|*Total*
+|*65000*
+|===
+
+So this requires us to perform multiplications and additions on monetary values.
+
+IMPORTANT: It is not allowed to use a library for currency representation!
+
+
+|===
+|Instrument |Shares | Price | Total
+
+|IBM
+|1000
+|25 USD
+|25000 USD
+
+|Novartis
+|400
+|150 CHF
+|60000 CHF
+
+|
+|
+|*Total*
+|*65000 USD*
+|===
+
+We have to be able to add currencies and we have to be able to specify exchange rates
+
+
+|===
+|From |To |Rate
+
+|CHF
+|USD
+|1.5
+|===
+
+
+So we have to be able to perform calculations like below.
+
+[source]
+----
+5 USD + 10 CHF = 10 USD (if rate is 2:1)
+5 USD * 2 = 10 USD
+----
+
+== Non functional requirements
+
+The resulting code should be _clean code_.
+The resulting test code should be _clean code_.
+
+TIP: Properly implement methods like `equals()`, `toString()`, and `hashCode()`.
+(`equals()` may be required to get clean test code as well).

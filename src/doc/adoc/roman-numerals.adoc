@@ -1,0 +1,87 @@
+= Roman numerals
+
+In this TDD kata we will practice converting decimal numbers into roman numerals.
+We will be using Test-Driven-Development.
+
+== Kata instructions
+
+Write an algorithm in a language of your choice to convert decimal numbers into their roman equivalent.
+
+IMPORTANT: We support conversions up to 3999 as beyond the rules are different from described below.
+
+== Roman number specification
+
+Roman numbers are a combination of the following letters.
+
+|===
+|Number |Roman Numeral
+
+|1
+|I
+
+|5
+|II
+
+|10
+|X
+
+|50
+|L
+
+|100
+|C
+
+|500
+|D
+
+|1000
+|M
+|===
+
+Numerals are summed
+
+|===
+|Number |Roman Numeral
+
+|3
+|III
+
+|7
+|VII
+
+|22
+|XXII
+
+|351
+|CCCLI
+
+|100
+|C
+
+|500
+|D
+
+|1000
+|M
+|===
+
+No numeral is repeated mote than three times contiguously.
+Instead, put a smaller numeral in front of a larger numeral.
+This smaller numeral will be subtracted from the larger one.
+
+|===
+|Number |Roman Numeral
+
+|4
+|IV
+
+|29
+|XXIX
+
+|49
+|ILIX
+
+|900
+|CM
+|===
+
